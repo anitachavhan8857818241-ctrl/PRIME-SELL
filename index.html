@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PRIME SELL | Premium Web Solutions</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{background:#090909;color:#fff;font-family:Arial,sans-serif}
+:root{--red:#ff2929;--card:#151515}
+a{text-decoration:none;color:inherit}
+header{height:75px;padding:0 7%;display:flex;align-items:center;justify-content:space-between;background:#101010;position:sticky;top:0;z-index:10;border-bottom:1px solid #333}
+.logo{font-size:27px;font-weight:900;color:var(--red);letter-spacing:2px}
+nav{display:flex;gap:20px}
+nav a{font-size:13px;color:#ddd}
+nav a:hover{color:var(--red)}
+.hero{min-height:520px;display:flex;align-items:center;padding:70px 9%;background:linear-gradient(90deg,#080808 15%,#080808cc 60%,#0005),url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1400') center/cover}
+.hero-content{max-width:650px}
+.tag{color:var(--red);letter-spacing:4px;font-size:12px;font-weight:bold}
+.hero h1{font-size:clamp(40px,7vw,75px);margin:20px 0;line-height:1.05}
+.hero h1 span{color:var(--red)}
+.hero p{color:#ccc;line-height:1.8}
+.btn{display:inline-block;background:var(--red);padding:14px 25px;border-radius:5px;margin:25px 8px 0 0;font-weight:bold;font-size:13px;transition:.3s}
+.btn:hover{background:#fff;color:#111;transform:translateY(-3px)}
+.btn-outline{background:transparent;border:1px solid var(--red)}
+section{padding:75px 8%}
+.section-title{text-align:center;margin-bottom:40px}
+.section-title small{color:var(--red);letter-spacing:3px}
+.section-title h2{font-size:34px;margin-top:12px}
+.section-title h2 span{color:var(--red)}
+.about{max-width:850px;text-align:center;margin:auto;color:#bbb;line-height:1.9}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:35px}
+.stat{background:var(--card);padding:22px;text-align:center;border:1px solid #292929;border-radius:8px}
+.stat strong{font-size:25px;color:var(--red)}
+.stat p{color:#aaa;margin-top:8px;font-size:12px}
+.offer{text-align:center;padding:19px;background:linear-gradient(90deg,#8d0808,#e32323,#8d0808);font-weight:bold;letter-spacing:1px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px}
+.demo-card{background:var(--card);border:1px solid #292929;border-radius:12px;overflow:hidden;transition:.3s}
+.demo-card:hover{transform:translateY(-7px);border-color:var(--red)}
+.demo-card img{width:100%;height:180px;object-fit:cover;display:block}
+.demo-info{padding:20px}
+.demo-info h3{margin-bottom:10px}
+.demo-info p{font-size:13px;color:#aaa;line-height:1.7}
+.demo-info a{display:inline-block;color:var(--red);font-weight:bold;font-size:12px;margin-top:18px}
+.plan{background:#151515;padding:25px;border-radius:12px;border:1px solid #333;transition:.3s}
+.plan:hover{transform:translateY(-6px)}
+.plan h3{font-size:20px}
+.price{font-size:29px;font-weight:900;margin:18px 0}
+.plan p{color:#aaa;font-size:13px;line-height:1.7}
+.plan ul{list-style:none;margin-top:17px}
+.plan li{padding:9px 0;border-bottom:1px solid #292929;color:#ddd;font-size:13px}
+.plan li:before{content:"✓ ";color:#ff2929;font-weight:bold}
+.bronze{border-color:#b87940}.bronze h3{color:#cd9560}
+.silver{border-color:#aaa}.silver h3{color:#ddd}
+.gold{border-color:#d6a900}.gold h3{color:#f2c84b}
+.platinum{border-color:#d8e1ed}.platinum h3{color:#d8e1ed}
+.diamond{border-color:#b44cff}.diamond h3{color:#ce91ff}
+.pink{border-color:#ff69a8}.pink h3{color:#ff9ac6}
+.royal{border:2px solid #00c7c7}.royal h3{color:#6dfafa}
+.ai-box{padding:55px 20px;text-align:center;background:linear-gradient(135deg,#190707,#260e20,#090909);border:3px dashed #ff2929}
+.ai-box h2{font-size:30px;color:#ff4545;margin-bottom:15px}
+.ai-box p{color:#ccc;line-height:1.8}
+.instructions{background:#151515;padding:30px;border-radius:10px;border:1px solid #333;line-height:1.9;color:#ccc}
+.instructions h3{color:var(--red);margin-bottom:10px}
+.instructions hr{border:0;border-top:1px solid #444;margin:22px 0}
+.instagram{display:block;text-align:center;max-width:300px;margin:25px auto;background:linear-gradient(90deg,#833ab4,#e1306c,#fd1d1d);padding:16px;border-radius:7px;font-weight:bold}
+.rating{text-align:center}
+.stars{font-size:38px;color:#ffc400;letter-spacing:5px;margin:15px}
+.rating-star{cursor:pointer;background:none;border:0;color:#777;font-size:38px}
+.rating-star.selected{color:#ffc400}
+footer{text-align:center;padding:35px 15px;background:#111;border-top:1px solid #333;color:#aaa;line-height:2}
+footer strong{color:var(--red)}
+
+/* Working demo preview */
+.demo-modal{display:none;position:fixed;inset:0;z-index:999;background:#090909;overflow-y:auto;padding:15px}
+.demo-modal.active{display:block}
+.demo-top{display:flex;justify-content:space-between;align-items:center;padding:15px;border-bottom:1px solid #444;position:sticky;top:-15px;background:#101010;z-index:2}
+.demo-top strong{color:var(--red);font-size:20px}
+.demo-top button{background:var(--red);color:white;border:0;padding:12px 18px;border-radius:5px;font-weight:bold}
+.demo-hero{min-height:330px;padding:45px 25px;margin:20px auto;max-width:1100px;display:flex;flex-direction:column;justify-content:center;background-size:cover;background-position:center;border-radius:12px}
+.demo-hero h1{font-size:clamp(32px,7vw,55px);margin:12px 0}
+.demo-hero p{line-height:1.7;max-width:500px}
+.demo-action{display:inline-block;background:var(--red);padding:12px 20px;margin-top:20px;border-radius:5px;font-weight:bold;width:max-content}
+.demo-products{max-width:1100px;margin:30px auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:15px}
+.demo-product{background:#191919;border:1px solid #333;border-radius:10px;overflow:hidden;padding-bottom:15px}
+.demo-product img{width:100%;height:160px;object-fit:cover}
+.demo-product h3,.demo-product p{margin:12px}
+.demo-product p{color:#bbb;font-size:13px}
+.demo-heading{text-align:center;margin:35px 0 15px}
+.demo-bottom{text-align:center;color:#aaa;padding:30px}
+.choose-btn{display:block;text-align:center;background:var(--red);padding:12px;margin-top:20px;border-radius:5px;font-size:12px;font-weight:bold}
+@media(max-width:650px){
+header{padding:0 4%;height:65px}
+.logo{font-size:21px}
+nav{gap:10px}
+nav a{font-size:10px}
+section{padding:55px 5%}
+.hero{min-height:460px;padding:50px 6%}
+.stats{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<div class="logo">PRIME SELL</div>
+<nav>
+<a href="#about">ABOUT</a>
+<a href="#demos">DEMOS</a>
+<a href="#prices">PRICES</a>
+<a href="#contact">CONTACT</a>
+</nav>
+</header>
+
+<div class="hero">
+<div class="hero-content">
+<div class="tag">WELCOME TO PRIME SELL</div>
+<h1>WE BUILD<br><span>YOUR DIGITAL</span><br>DREAMS.</h1>
+<p>Professional Website Design, Premium Customization and Modern AI Website Solutions. Take your business to the next level.</p>
+<a href="#demos" class="btn">EXPLORE DEMOS ↗</a>
+<a href="#prices" class="btn btn-outline">OUR PACKAGES</a>
+</div>
+</div>
+
+<section id="about">
+<div class="section-title">
+<small>WHO WE ARE</small>
+<h2>ABOUT <span>US</span></h2>
+</div>
+<p class="about">
+Welcome to PRIME SELL! We create modern, attractive and professional websites for businesses, brands and individuals. Our mission is to provide creative designs, useful features and affordable website solutions. We also offer website customization and AI-powered website solutions.
+</p>
+<div class="stats">
+<div class="stat"><strong>7+</strong><p>WEBSITE PACKAGES</p></div>
+<div class="stat"><strong>5</strong><p>DEMO CATEGORIES</p></div>
+<div class="stat"><strong>AI</strong><p>SMART SOLUTIONS</p></div>
+</div>
+</section>
+
+<div class="offer">🔥 SPECIAL OFFER: FIRST 5 CUSTOMERS GET 25% OFF! 🔥</div>
+
+<section id="demos">
+<div class="section-title">
+<small>EXPLORE OUR WORK</small>
+<h2>WEBSITE <span>DEMOS</span></h2>
+</div>
+<div class="grid">
+
+<div class="demo-card">
+<img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=700" alt="Clothing store">
+<div class="demo-info">
+<h3>Clothing Store</h3>
+<p>Modern fashion and clothing shopping website design.</p>
+<a href="#" onclick="openDemo('clothes');return false">EXPLORE DEMO ↗</a>
+</div>
+</div>
+
+<div class="demo-card">
+<img src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=700" alt="Flower shop">
+<div class="demo-info">
+<h3>Flower Shop</h3>
+<p>Beautiful floral store website with elegant layouts.</p>
+<a href="#" onclick="openDemo('flowers');return false">EXPLORE DEMO ↗</a>
+</div>
+</div>
+
+<div class="demo-card">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=700" alt="Restaurant">
+<div class="demo-info">
+<h3>Restaurant Website</h3>
+<p>Restaurant website with menu and food gallery design.</p>
+<a href="#" onclick="openDemo('restaurant');return false">EXPLORE DEMO ↗</a>
+</div>
+</div>
+
+<div class="demo-card">
+<img src="https://images.unsplash.com/photo-1498049794561-7780e7231661?w=700" alt="Electronics">
+<div class="demo-info">
+<h3>Electronics Store</h3>
+<p>Modern electronics shopping website concept.</p>
+<a href="#" onclick="openDemo('electronics');return false">EXPLORE DEMO ↗</a>
+</div>
+</div>
+
+<div class="demo-card">
+<img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=700" alt="Real estate">
+<div class="demo-info">
+<h3>Real Estate</h3>
+<p>Professional property and real estate website design.</p>
+<a href="#" onclick="openDemo('realestate');return false">EXPLORE DEMO ↗</a>
+</div>
+</div>
+
+</div>
+</section>
+
+<section id="prices">
+<div class="section-title">
+<small>CHOOSE YOUR PLAN</small>
+<h2>OUR <span>PACKAGES</span></h2>
+</div>
+<div class="grid">
+
+<div class="plan bronze">
+<h3>BRONZE</h3><div class="price">₹500+</div>
+<p>Perfect for a simple online presence.</p>
+<ul><li>Basic Landing Page</li><li>Simple Design</li><li>Mobile Friendly</li><li>Contact Section</li></ul>
+<a class="choose-btn" href="https://www.instagram.com/prime_sellar_81/" target="_blank" rel="noopener" onclick="return choosePlan('BRONZE')">CHOOSE PLAN ↗</a>
+</div>
+
+<div class="plan silver">
+<h3>SILVER</h3><div class="price">₹1,500+</div>
+<p>For personal and small business websites.</p>
+<ul><li>Modern Design</li><li>Up to 3 Pages</li><li>Responsive Layout</li><li>Contact Section</li></ul>
+<a class="choose-btn" href="https://www.instagram.com/prime_sellar_81/" target="_blank" rel="noopener" onclick="return choosePlan('SILVER')">CHOOSE PLAN ↗</a>
+</div>
+
+<div class="plan gold">
+<h3>GOLD</h3><div class="price">₹3,000+</div>
+<p>A more advanced website experience.</p>
+<ul><li>Premium UI Design</li><li>Up to 5 Pages</li><li>Animations</li><li>Advanced Sections</li></ul>
+<a class="choose-btn" href="https://www.instagram.com/prime_sellar_81/" target="_blank" rel="noopener" onclick="return choosePlan('GOLD')">CHOOSE PLAN ↗</a>
+</div>
+
+<div class="plan platinum">
+<h3>PLATINUM</h3><div class="price">₹6,000+</div>
+<p>Premium design for growing brands.</p>
+<ul><li>Custom Layout</li><li>Advanced Animations</li><li>SEO Basic Setup</li><li>Premium Design</li></ul>
+<a class="choose-btn" href="https://www.instagram.com/prime_sellar_81/" target="_blank" rel="noopener" onclick="return choosePlan('PLATINUM')">CHOOSE PLAN ↗</a>
+</div>
+
+<div class="plan diamond">
+<h3>DIAMOND 💜</h3><div class="price">₹10,000+</div>
+<p>Luxury and custom website solutions.</p>
+<ul><li>Luxury UI Design</li><li>Custom Features</li><li>Advanced Functionality</li><li>Premium Experience</li></ul>
+<a class="choose-btn" href="https://www.instagram.com/prime_sellar_81/" target="_blank" rel="noopener" onclick="return choosePlan('DIAMOND')">CHOOSE PLAN ↗</a>
+</div>
+
+<div class="plan pink">
+<h3>PINK ELITE</h3><div class="price">₹20,000+</div>
+<p>Advanced solutions for businesses.</p>
+<ul><li>Advanced Business Website</li><li>Custom Sections</li><li>Interactive Features</li><li>Custom Design</li></ul>
+<a class="choose-btn" href="https://www.instagram.com/prime_sellar_81/" target="_blank" rel="noopener" onclick="return choosePlan('PINK ELITE')">CHOOSE PLAN ↗</a>
+</div>
+
+<div class="plan royal">
+<h3>ROYAL PREMIUM</h3><div class="price">₹40,000+</div>
+<p>Our top-level custom website package.</p>
+<ul><li>Fully Custom Website</li><li>Advanced Web Solutions</li><li>Custom Integrations</li><li>Unique Premium Design</li></ul>
+<a class="choose-btn" href="https://www.instagram.com/prime_sellar_81/" target="_blank" rel="noopener" onclick="return choosePlan('ROYAL PREMIUM')">CHOOSE PLAN ↗</a>
+</div>
+
+</div>
+<p style="text-align:center;color:#aaa;margin-top:35px;line-height:1.8">
+WE HAVE WEBSITES AVAILABLE IN ALL PRICE RANGES.<br>
+FINAL PRICES DEPEND ON FEATURES AND REQUIREMENTS.
+</p>
+</section>
+
+<section>
+<div class="ai-box">
+<h2>AI WEBSITES AVAILABLE!</h2>
+<p>We also create modern AI-powered websites with smart features, intelligent experiences and custom solutions.</p>
+<a href="#contact" class="btn">ENQUIRE NOW ↗</a>
+</div>
+</section>
+
+<section id="contact">
+<div class="section-title">
+<small>LET'S WORK TOGETHER</small>
+<h2>CONTACT <span>US</span></h2>
+</div>
+<div class="instructions">
+<h3>HOW TO BUY OR CUSTOMIZE A WEBSITE</h3>
+<p>If you want to buy a website or customize an existing design, visit our Instagram account using the button below. Find <b>@prime_sell_81</b>, tap on Message and discuss your website requirements with the owner.</p>
+<hr>
+<h3>वेबसाइट कैसे खरीदें या Customize करवाएं?</h3>
+<p>अगर आपको वेबसाइट खरीदनी है या फिर Customize करवानी है, तो नीचे दिए गए Instagram बटन पर क्लिक करें। वहाँ आपको <b>@prime_sell_81</b> अकाउंट दिखाई देगा। Message पर टैप करके अपनी वेबसाइट के बारे में बात करें।</p>
+</div>
+<a class="instagram" href="https://www.instagram.com/prime_sell_81/" target="_blank" rel="noopener">📸 VISIT OUR INSTAGRAM</a>
+</section>
+
+<section class="rating">
+<div class="section-title">
+<small>YOUR FEEDBACK MATTERS</small>
+<h2>RATE <span>OUR SERVICE</span></h2>
+</div>
+<div class="stars" aria-label="Select a rating">
+<button class="rating-star" onclick="rate(1)">★</button>
+<button class="rating-star" onclick="rate(2)">★</button>
+<button class="rating-star" onclick="rate(3)">★</button>
+<button class="rating-star" onclick="rate(4)">★</button>
+<button class="rating-star" onclick="rate(5)">★</button>
+</div>
+<p id="ratingMessage" style="color:#aaa">QUALITY • CREATIVITY • TRUST</p>
+</section>
+
+<footer>
+<p>Thank you for visiting PRIME SELL!</p>
+<p>Professional Websites | Creative Designs | AI Solutions</p>
+<strong>IT IS CREATED BY ANSH CHAVHAN.</strong>
+</footer>
+
+<!-- Demo preview inside the same page -->
+<div class="demo-modal" id="demoModal">
+  <div class="demo-top">
+    <strong id="demoLogo">DEMO WEBSITE</strong>
+    <button onclick="closeDemo()">✕ CLOSE</button>
+  </div>
+  <div class="demo-hero" id="demoHero">
+    <h1 id="demoTitle"></h1>
+    <p id="demoDesc"></p>
+    <a href="#" class="demo-action" id="demoContact" onclick="contactFromDemo();return false">CONTACT US</a>
+  </div>
+  <h2 class="demo-heading" id="demoProductsTitle">EXPLORE OUR COLLECTION</h2>
+  <div class="demo-products" id="demoProducts"></div>
+  <div class="demo-bottom">DEMO WEBSITE PREVIEW • POWERED BY PRIME SELL</div>
+</div>
+
+<script>
+const instagramURL="https://www.instagram.com/prime_sellar_81/";
+
+const demoData={
+  clothes:{
+    logo:"STYLE STORE",
+    title:"WEAR YOUR STYLE.",
+    desc:"Discover the latest fashion and upgrade your wardrobe with our new collection.",
+    image:"photo-1441986300917-64674bd600d8",
+    heading:"TRENDING FASHION",
+    items:[
+      ["Men's Fashion","photo-1529139574466-a303027c1d8"],
+      ["Women's Fashion","photo-1483985988355-763728e1935b"],
+      ["New Collection","photo-1490481651871-ab68de25d43d"]
+    ]
+  },
+  flowers:{
+    logo:"BLOOM FLOWERS",
+    title:"FLOWERS THAT SPEAK.",
+    desc:"Beautiful flowers and thoughtful gifts for every special moment.",
+    image:"photo-1490750967868-88aa4486c946",
+    heading:"OUR FLOWER COLLECTION",
+    items:[
+      ["Rose Bouquet","photo-1518895949257-7621c3c786d7"],
+      ["Wedding Flowers","photo-1523438885200-e635ba2c371e"],
+      ["Gift Flowers","photo-1494972308805-463bc619d34e"]
+    ]
+  },
+  restaurant:{
+    logo:"TASTY RESTAURANT",
+    title:"FRESH FOOD. GREAT TASTE.",
+    desc:"Enjoy delicious food, fresh ingredients and a memorable dining experience.",
+    image:"photo-1517248135467-4c7edcad34c4",
+    heading:"OUR SPECIAL MENU",
+    items:[
+      ["Delicious Pizza","photo-1513104890138-7c749659a591"],
+      ["Fresh Burger","photo-1568901346375-23c9450c58cd"],
+      ["Tasty Pasta","photo-1473093295043-cdd812d0e601"]
+    ]
+  },
+  electronics:{
+    logo:"TECH WORLD",
+    title:"UPGRADE YOUR TECH.",
+    desc:"Explore modern gadgets and electronics for your everyday life.",
+    image:"photo-1498049794561-7780e7231661",
+    heading:"FEATURED GADGETS",
+    items:[
+      ["Smartphones","photo-1511707171634-5f897ff02aa9"],
+      ["Headphones","photo-1505740420928-5e560c06d30e"],
+      ["Smart Watches","photo-1523275335684-37898b6baf30"]
+    ]
+  },
+  realestate:{
+    logo:"DREAM HOMES",
+    title:"FIND YOUR DREAM HOME.",
+    desc:"Discover beautiful homes, premium apartments and amazing properties.",
+    image:"photo-1560518883-ce09059eeffa",
+    heading:"FEATURED PROPERTIES",
+    items:[
+      ["Modern Houses","photo-1600585154340-be6161a56a0c"],
+      ["Luxury Villas","photo-1613490493576-7fde63acd811"],
+      ["Apartments","photo-1600607687939-ce8a6c25118c"]
+    ]
+  }
+};
+
+function openDemo(type){
+  const d=demoData[type];
+  if(!d)return;
+
+  document.getElementById("demoLogo").textContent=d.logo;
+  document.getElementById("demoTitle").textContent=d.title;
+  document.getElementById("demoDesc").textContent=d.desc;
+  document.getElementById("demoProductsTitle").textContent=d.heading;
+
+  document.getElementById("demoHero").style.backgroundImage=
+    `linear-gradient(90deg,#000d,#0007),url(https://images.unsplash.com/${d.image}?w=1200)`;
+
+  document.getElementById("demoProducts").innerHTML=d.items.map(item=>`
+    <div class="demo-product">
+      <img src="https://images.unsplash.com/${item[1]}?w=500" alt="${item[0]}">
+      <h3>${item[0]}</h3>
+      <p>Explore our ${item[0].toLowerCase()} collection.</p>
+    </div>
+  `).join("");
+
+  document.getElementById("demoModal").classList.add("active");
+  document.body.style.overflow="hidden";
+  document.getElementById("demoModal").scrollTop=0;
+}
+
+function closeDemo(){
+  document.getElementById("demoModal").classList.remove("active");
+  document.body.style.overflow="";
+}
+
+function choosePlan(plan){
+  const message="Hello PRIME SELL! I am interested in the "+plan+" website package. Please share more details.";
+  window.open(instagramURL,"_blank");
+  return true;
+}
+
+function contactFromDemo(){
+  closeDemo();
+  document.getElementById("contact").scrollIntoView({behavior:"smooth"});
+}
+
+function rate(value){
+  const stars=document.querySelectorAll(".rating-star");
+  stars.forEach((star,index)=>{
+    star.classList.toggle("selected",index<value);
+  });
+  document.getElementById("ratingMessage").textContent=
+    "Thank you for your "+value+"-star rating!";
+}
+
+document.addEventListener("keydown",function(event){
+  if(event.key==="Escape")closeDemo();
+});
+</script>
+
+</body>
+</html>
